@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Elegance Store</title>
+    <!-- Normalize V8.0.1 -->
+    <link rel="stylesheet" href="./css/normalize.css">
+
+    <!-- MDBootstrap V5 -->
+    <link rel="stylesheet" href="./css/mdb.min.css">
+
+    <!-- Font Awesome V5.15.1 -->
+    <link rel="stylesheet" href="./css/all.css">
+
+    <!-- Sweet Alert V10.13.0 -->
+    <script src="./js/sweetalert2.js"></script>
+
+    <!-- General Styles -->
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body id="main-body">
+
+  <!-- Header -->
+  <header class="header full-box bg-white">
+    <div class="header-brand full-box">
+        <a href="index.html">
+            <img src="./assets/img/logo.png" alt="Beauty & Caps" class="img-fluid">
+        </a>
+    </div>
+
+    <div class="header-options full-box">
+        <nav class="header-navbar full-box poppins-regular font-weight-bold scroll" onclick="show_menu_mobile()">
+            <ul class="list-unstyled full-box">
+                <li>
+                    <a href="index.html">Inicio</a>
+                </li>
+                <li>
+                    <a href="menuGorras.html">TacsCaps</a>
+                </li>
+                <li>
+                    <a href="menuAccesorios.html">PERLËE</a>
+                </li>
+                <li>
+                    <a href="menuBelleza.html">FEMA BEAUTY</a>
+                </li>
+            </ul>
+        </nav>
+        <a href="bag.html" class="header-button full-box text-center" title="Carrito">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="badge bg-primary rounded-pill bag-count">2</span>
+        </a>
+
+        <div class="header-button full-box text-center" id="userMenu" data-mdb-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Nombre de usuario">
+            <i class="fas fa-user-circle"></i>
+        </div>
+        <div class="dropdown-menu div-bordered popup-login" aria-labelledby="userMenu">
+            <p class="text-center" style="padding-top: 10px;">
+                <i class="fas fa-user-circle fa-3x"></i><br>
+                <small>Nombre de usuario</small>
+            </p>
+            <a class="dropdown-item" href="javascript:void(0);">
+                <i class="fab fa-dashcube fa-fw"></i> &nbsp; Dashboard
+            </a>
+            <a class="dropdown-item" href="javascript:void(0);">
+                <i class="fas fa-sign-out-alt"></i> &nbsp; Cerrar sesión
+            </a>
+        </div>
+
+        <a href="javascript:void(0);" class="header-button full-box text-center d-lg-none" title="Menú" onclick="show_menu_mobile()">
+            <i class="fas fa-bars"></i>
+        </a>
+    </div>
+</header>
+    <!-- Content -->
+    <section class="container-cart">
+        <div class="container container-web-page">
+            <h3 class="font-weight-bold poppins-regular text-uppercase">Carrito de compras</h3>
+            <hr>
+        </div>
+        
+        <div class="container" style="padding-top: 40px;">
+            <div class="row">
+                <div class="col-12 col-md-7 col-lg-8">
+                    <div class="container-fluid" id="cart-products">
+                        <!-- Aquí se cargarán los productos del carrito -->
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 col-lg-4">
+                    <div class="full-box div-bordered">
+                        <h5 class="text-center text-uppercase bg-success" style="color: #FFF; padding: 10px 0;">Resumen de la orden</h5>
+                        <ul class="list-group bag-details">
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-uppercase poppins-regular font-weight-bold">
+                                Subtotal
+                                <span id="subtotal">$0.00</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-uppercase poppins-regular font-weight-bold">
+                                Envío
+                                <span>$80.00</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center text-uppercase poppins-regular font-weight-bold">
+                                Total
+                                <span id="total">$80.00</span>
+                            </li>
+                        </ul>
+                        <p class="text-center">
+                            <button type="button" class="btn btn-primary" id="confirm-order-btn">Confirmar orden</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carrito vacío -->
+        <div class="container" id="empty-cart-message" style="display: none;">
+            <p class="text-center"><i class="fas fa-shopping-bag fa-5x"></i></p>
+            <h4 class="text-center poppins-regular font-weight-bold">Carrito de compras vacío</h4>
+        </div>
+    </section>
+
+    <!-- Footer -->
+	<footer class="footer">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-12 col-md-4">
+	                <ul class="list-unstyled" >
+	                    <li><h5 class="font-weight-bold" ><i class="far fa-copyright"></i> Elegance Store 2024</h5></li>
+	                    <li> Todos los derechos reservados </li>
+	                </ul>
+	            </div>
+	            <div class="col-12 col-md-4">
+	                <ul class="list-unstyled" >
+	                    <li><h5 class="font-weight-bold" >Navojoa</h5></li>
+	                    <li><i class="fas fa-map-marker-alt fa-fw"></i> Navojoa,Sonora,México</li>
+	                </ul>
+	            </div>
+	            <div class="col-12 col-md-4">
+	                <ul class="list-unstyled" >
+	                    <li><h5 class="font-weight-bold" >Siguenos en:</h5> </li>
+	                    <li>
+	                        <a href="" class="footer-link" target="_blank" >
+	                            <i class="fab fa-instagram fa-fw"></i> Instragram
+	                        </a>
+	                    </li>
+
+	                </ul>
+	            </div>
+	        </div>
+	    </div>
+	</footer>
+
+    <!-- MDBootstrap V5 -->
+    <script src="./js/mdb.min.js"></script>
+
+    <!-- General scripts -->
+    <script src="./js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const cartContainer = document.getElementById("cart-products");
+            const emptyCartMessage = document.getElementById("empty-cart-message");
+            const subtotalElement = document.getElementById("subtotal");
+            const totalElement = document.getElementById("total");
+            const bagCount = document.querySelector(".bag-count");
+            const confirmOrderBtn = document.getElementById("confirm-order-btn");
+
+            function updateCartDisplay() {
+                cartContainer.innerHTML = "";
+                let subtotal = 0;
+                if (cart.length === 0) {
+                    emptyCartMessage.style.display = "block";
+                } else {
+                    emptyCartMessage.style.display = "none";
+                    cart.forEach((product, index) => {
+                        const productHTML = `
+                            <div class="bag-item full-box">
+                                <h5 class="poppins-regular font-weight-bold full-box text-center">${product.name}</h5>
+                                <figure class="full-box">
+                                    <img src="${product.img}" class="img-fluid" alt="${product.name}">
+                                </figure>
+                                <div class="full-box">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12 col-lg-6 text-center mb-4">
+												<div class="row align-items-center">
+													<div class="col-auto">
+														<label for="product_cant_${index}" class="form-label">Cantidad</label>
+													</div>
+													<div class="col-auto">
+															<input type="text" value="${product.quantity}" class="form-control text-center product-quantity" id="product_cant_${index}" pattern="[0-9]{1,10}" maxlength="10" style="max-width: 100px;">
+													</div>
+													<div class="col-auto">
+														<button type="button" class="btn btn-success update-quantity" data-index="${index}" title="Actualizar cantidad"><i class="fas fa-sync-alt fa-fw"></i></button>
+													</div>
+												</div>
+                                            </div>
+                                            <div class="col-12 col-lg-4 text-center mb-4">
+                                                <span class="poppins-regular font-weight-bold">SUBTOTAL: $${(product.price * product.quantity).toFixed(2)}</span>
+                                            </div>
+                                            <div class="col-12 col-lg-2 text-center text-lg-end mb-4">
+                                                <button type="button" class="btn btn-danger remove-product" data-index="${index}" title="Quitar del carrito">
+                                                    <span aria-hidden="true"><i class="far fa-trash-alt"></i></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        `;
+                        cartContainer.insertAdjacentHTML("beforeend", productHTML);
+                        subtotal += product.price * product.quantity;
+                    });
+                }
+                subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+                totalElement.textContent = `$${(subtotal + 80).toFixed(2)}`; // Assuming a flat shipping rate of $80
+                bagCount.textContent = cart.length;
+				updateCartCount();
+
+            }
+
+			cartContainer.addEventListener("click", (e) => {
+				if (e.target.classList.contains("update-quantity") || e.target.parentNode.classList.contains("update-quantity")) {
+					const index = e.target.closest(".update-quantity").dataset.index;
+					const quantityInput = document.getElementById(`product_cant_${index}`);
+					const newQuantity = parseInt(quantityInput.value);
+					if (newQuantity > 0) {
+						cart[index].quantity = newQuantity;
+						localStorage.setItem("cart", JSON.stringify(cart));
+						Swal.fire({
+							title: 'Cantidad actualizada',
+							text: 'La cantidad del producto ha sido actualizada.',
+							icon: 'success',
+							confirmButtonText: 'OK'
+						}).then(() => {
+							updateCartCount();
+							updateCartDisplay();
+						});
+					} else {
+						Swal.fire({
+							title: 'Cantidad inválida',
+							text: 'La cantidad debe ser mayor que 0.',
+							icon: 'error',
+							confirmButtonText: 'OK'
+						});
+					}
+				}
+				if (e.target.classList.contains("remove-product") || e.target.parentNode.classList.contains("remove-product")) {
+					const index = e.target.closest(".remove-product").dataset.index;
+					cart.splice(index, 1);
+					localStorage.setItem("cart", JSON.stringify(cart));
+					Swal.fire({
+						title: 'Producto eliminado',
+						text: 'El producto ha sido eliminado del carrito.',
+						icon: 'success',
+						confirmButtonText: 'OK'
+					}).then(() => {
+						updateCartCount();
+						updateCartDisplay();
+					});
+				}
+			});
+			function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                const cartCount = cart.reduce((total, product) => total + product.quantity, 0);
+                document.querySelector(".bag-count").textContent = cartCount;
+            }
+   		 	updateCartDisplay();
+
+            confirmOrderBtn.addEventListener("click", () => {
+                window.location.href = "pago.html"; // Cambia "pago.html" por la URL de tu página de pago
+            });
+        });
+    </script><script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const cartContainer = document.getElementById("cart-products");
+            const emptyCartMessage = document.getElementById("empty-cart-message");
+            const subtotalElement = document.getElementById("subtotal");
+            const totalElement = document.getElementById("total");
+            const bagCount = document.querySelector(".bag-count");
+            const confirmOrderBtn = document.getElementById("confirm-order-btn");
+
+            function updateCartDisplay() {
+                cartContainer.innerHTML = "";
+                let subtotal = 0;
+                if (cart.length === 0) {
+                    emptyCartMessage.style.display = "block";
+                } else {
+                    emptyCartMessage.style.display = "none";
+                    cart.forEach((product, index) => {
+                        const productHTML = `
+                            <div class="bag-item full-box">
+                                <h5 class="poppins-regular font-weight-bold full-box text-center">${product.name}</h5>
+                                <figure class="full-box">
+                                    <img src="${product.img}" class="img-fluid" alt="${product.name}">
+                                </figure>
+                                <div class="full-box">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12 col-lg-6 text-center mb-4">
+												<div class="row align-items-center">
+													<div class="col-auto">
+														<label for="product_cant_${index}" class="form-label">Cantidad</label>
+													</div>
+													<div class="col-auto">
+															<input type="text" value="${product.quantity}" class="form-control text-center product-quantity" id="product_cant_${index}" pattern="[0-9]{1,10}" maxlength="10" style="max-width: 100px;">
+													</div>
+													<div class="col-auto">
+														<button type="button" class="btn btn-success update-quantity" data-index="${index}" title="Actualizar cantidad"><i class="fas fa-sync-alt fa-fw"></i></button>
+													</div>
+												</div>
+                                            </div>
+                                            <div class="col-12 col-lg-4 text-center mb-4">
+                                                <span class="poppins-regular font-weight-bold">SUBTOTAL: $${(product.price * product.quantity).toFixed(2)}</span>
+                                            </div>
+                                            <div class="col-12 col-lg-2 text-center text-lg-end mb-4">
+                                                <button type="button" class="btn btn-danger remove-product" data-index="${index}" title="Quitar del carrito">
+                                                    <span aria-hidden="true"><i class="far fa-trash-alt"></i></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        `;
+                        cartContainer.insertAdjacentHTML("beforeend", productHTML);
+                        subtotal += product.price * product.quantity;
+                    });
+                }
+                subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+                totalElement.textContent = `$${(subtotal + 80).toFixed(2)}`; // Assuming a flat shipping rate of $80
+                bagCount.textContent = cart.length;
+				updateCartCount();
+
+            }
+
+			cartContainer.addEventListener("click", (e) => {
+				if (e.target.classList.contains("update-quantity") || e.target.parentNode.classList.contains("update-quantity")) {
+					const index = e.target.closest(".update-quantity").dataset.index;
+					const quantityInput = document.getElementById(`product_cant_${index}`);
+					const newQuantity = parseInt(quantityInput.value);
+					if (newQuantity > 0) {
+						cart[index].quantity = newQuantity;
+						localStorage.setItem("cart", JSON.stringify(cart));
+						Swal.fire({
+							title: 'Cantidad actualizada',
+							text: 'La cantidad del producto ha sido actualizada.',
+							icon: 'success',
+							confirmButtonText: 'OK'
+						}).then(() => {
+							updateCartCount();
+							updateCartDisplay();
+						});
+					} else {
+						Swal.fire({
+							title: 'Cantidad inválida',
+							text: 'La cantidad debe ser mayor que 0.',
+							icon: 'error',
+							confirmButtonText: 'OK'
+						});
+					}
+				}
+				if (e.target.classList.contains("remove-product") || e.target.parentNode.classList.contains("remove-product")) {
+					const index = e.target.closest(".remove-product").dataset.index;
+					cart.splice(index, 1);
+					localStorage.setItem("cart", JSON.stringify(cart));
+					Swal.fire({
+						title: 'Producto eliminado',
+						text: 'El producto ha sido eliminado del carrito.',
+						icon: 'success',
+						confirmButtonText: 'OK'
+					}).then(() => {
+						updateCartCount();
+						updateCartDisplay();
+					});
+				}
+			});
+			function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                const cartCount = cart.reduce((total, product) => total + product.quantity, 0);
+                document.querySelector(".bag-count").textContent = cartCount;
+            }
+   		 	updateCartDisplay();
+
+            confirmOrderBtn.addEventListener("click", () => {
+                window.location.href = "pago.html"; // Cambia "pago.html" por la URL de tu página de pago
+            });
+        });
+    </script>
+	<!-- MDBootstrap V5 -->
+	<script src="./js/mdb.min.js" ></script>
+
+	<!-- General scripts -->
+	<script src="./js/main.js" ></script>
+</body>
+</html>
